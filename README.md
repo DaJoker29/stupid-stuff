@@ -7,5 +7,5 @@ Stupid things that I threw together to figure stuff out (mental exercises, proto
 Silly things so far:
 ====================
 
-[Binary String Generator](binary-string-generator)
-[Prometheus](prometheus)
++ [Binary String Generator](binary-string-generator)
++ [Prometheus](prometheus)
