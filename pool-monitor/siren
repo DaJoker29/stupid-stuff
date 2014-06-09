@@ -1,0 +1,8 @@
+#!/bin/bash
+#   Eligius Monitoring/Notification
+
+#   Get Config Settings
+
+source ~/.siren.cfg
+echo $USERNAME
+echo $CONTACTS
