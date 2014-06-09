@@ -3,6 +3,7 @@
 #   Instructions:
 #       Link siren.cfg to /etc/siren.cfg
 #       Link siren to /bin/siren
+#       Add to crontab 0 8,20 * * * /bin/siren
 
 #   Get Config Settings
 
@@ -23,7 +24,7 @@ if [ -a $bal ]; then
         diff="$(expr $balance - $oldbal | awk '{printf( "%." C "f", $1 / 10^C) }' C=8)"
 
         for x in $CONTACTS; do
-            curl $api -d number=$x -d "message=Eligius has paid out $diff in the past 12 hours" > /dev/null 2>&1
+            curl $api -d number=$x -d "message=Eligius has recently paid out $diff BTC" > /dev/null 2>&1
         done
 
         echo $balance > $bal
