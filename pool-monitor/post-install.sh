@@ -1,5 +1,6 @@
 #!/bin/bash
 #Init
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 SIREN=siren
 CONFIG=siren.cfg

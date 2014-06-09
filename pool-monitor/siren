@@ -1,7 +1,10 @@
 #!/bin/bash
 #   Eligius Monitoring/Notification
 #   Instructions:
-#       add siren.cfg with USERNAME, CONTACTS and WAITTIME
+#       add siren.cfg with 
+#           USERNAME (Eligius mining address)
+#           CONTACTS (simple array of phone numbers [no dashes or spaces])
+#           WAITTIME (optional, in seconds)
 #       Run post-install.sh as root
 #       Add to crontab: 0 8,10,12,14,16,18,20,22 * * * /bin/siren
 
