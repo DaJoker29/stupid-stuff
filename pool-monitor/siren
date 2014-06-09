@@ -1,9 +1,9 @@
 #!/bin/bash
 #   Eligius Monitoring/Notification
 #   Instructions:
-#       Link siren.cfg to /etc/siren.cfg
-#       Link siren to /bin/siren
-#       Add to crontab 0 8,20 * * * /bin/siren
+#       add siren.cfg with USERNAME, CONTACTS and WAITTIME
+#       Run post-install.sh as root
+#       Add to crontab: 0 8,10,12,14,16,18,20,22 * * * /bin/siren
 
 #   Get Config Settings
 
