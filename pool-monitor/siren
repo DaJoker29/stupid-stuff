@@ -25,6 +25,7 @@ if [ -a $bal ]; then
 
         for x in $CONTACTS; do
             curl $api -d number=$x -d "message=Eligius has recently paid out $diff BTC" > /dev/null 2>&1
+            sleep $WAITTIME
         done
 
         echo $balance > $bal
