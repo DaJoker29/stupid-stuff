@@ -4,5 +4,26 @@
 #   Get Config Settings
 
 source ~/.siren.cfg
-echo $USERNAME
-echo $CONTACTS
+
+#   Get Current Pool Balance (everpaid)
+
+url="http://eligius.st/~wizkid057/newstats/api.php?cmd=getuserstat&username="
+api="http://textbelt.com/text"
+content="$(curl -s "$url$USERNAME")"
+
+balance="$(echo $content | grep -Po '"everpaid":(\d*?,|.*?[^\\]",)' | awk -F ':' '{print $2}' | sed 's/,$//')"
+
+if [ -a balance.txt ]; then
+    oldbal=$(cat balance.txt)
+    if [ "$balance" -ne "$oldbal" ]; then
+        diff="$(expr $balance - $oldbal | awk '{printf( "%." C "f", $1 / 10^C) }' C=8)"
+
+        for x in $CONTACTS; do
+            curl $api -d number=$x -d "message=Eligius has paid out $diff in the past 12 hours" > /dev/null 2>&1
+        done
+
+        echo $balance > balance.txt
+    fi
+else
+    echo $balance > balance.txt
+fi
