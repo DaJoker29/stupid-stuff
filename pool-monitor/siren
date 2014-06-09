@@ -1,20 +1,24 @@
 #!/bin/bash
 #   Eligius Monitoring/Notification
+#   Instructions:
+#       Link siren.cfg to /etc/siren.cfg
+#       Link siren to /bin/siren
 
 #   Get Config Settings
 
-source ~/.siren.cfg
+source /etc/siren.cfg
 
 #   Get Current Pool Balance (everpaid)
 
 url="http://eligius.st/~wizkid057/newstats/api.php?cmd=getuserstat&username="
 api="http://textbelt.com/text"
+bal="/home/dajoker29/.balance.txt"
 content="$(curl -s "$url$USERNAME")"
 
 balance="$(echo $content | grep -Po '"everpaid":(\d*?,|.*?[^\\]",)' | awk -F ':' '{print $2}' | sed 's/,$//')"
 
-if [ -a balance.txt ]; then
-    oldbal=$(cat balance.txt)
+if [ -a $bal ]; then
+    oldbal=$(cat $bal)
     if [ "$balance" -ne "$oldbal" ]; then
         diff="$(expr $balance - $oldbal | awk '{printf( "%." C "f", $1 / 10^C) }' C=8)"
 
@@ -22,8 +26,8 @@ if [ -a balance.txt ]; then
             curl $api -d number=$x -d "message=Eligius has paid out $diff in the past 12 hours" > /dev/null 2>&1
         done
 
-        echo $balance > balance.txt
+        echo $balance > $bal
     fi
 else
-    echo $balance > balance.txt
+    echo $balance > $bal
 fi
