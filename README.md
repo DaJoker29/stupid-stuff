@@ -10,3 +10,4 @@ Silly things so far:
 + [Binary String Generator](binary-string-generator)
 + [Prometheus](prometheus)
 + [Matrix Terminal](matrix-terminal)
++ [Siren](pool-monitor)
