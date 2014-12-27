@@ -11,3 +11,4 @@ Silly things so far:
 + [Prometheus](prometheus)
 + [Matrix Terminal](matrix-terminal)
 + [Siren](pool-monitor)
++ [Ditto](ditto)
